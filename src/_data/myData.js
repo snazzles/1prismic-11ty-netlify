@@ -1,5 +1,5 @@
 const Prismic = require("prismic-javascript");
-const PrismicDOM = require("prismic-dom");
+//const PrismicDOM = require("prismic-dom");
 
 let webhookData = process.env.INCOMING_HOOK_BODY
   ? JSON.parse(process.env.INCOMING_HOOK_BODY)
