@@ -26,8 +26,8 @@ module.exports = async function() {
   let prismicData = await getPrismicData(prismicRef);
   console.log(prismicData);
   return {
-    webhookData: JSON.stringify(webhookData),
-    prismicRef: prismicRef,
-    prismicData: JSON.stringify(prismicData)
+    // webhookData: JSON.stringify(webhookData),
+    // prismicRef: prismicRef,
+    prismicData: JSON.stringify(prismicData, undefined, 2)
   };
 };
