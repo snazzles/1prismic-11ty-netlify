@@ -1,11 +1,11 @@
 const Prismic = require("prismic-javascript");
-//const PrismicDOM = require("prismic-dom");
+const PrismicDOM = require("prismic-dom");
 
-// let webhookData = process.env.INCOMING_HOOK_BODY
-//   ? JSON.parse(process.env.INCOMING_HOOK_BODY)
-//   : undefined;
+let webhookData = process.env.INCOMING_HOOK_BODY
+  ? JSON.parse(process.env.INCOMING_HOOK_BODY)
+  : undefined;
 
-// let prismicRef = webhookData ? webhookData.masterRef : undefined;
+let prismicRef = webhookData ? webhookData.masterRef : undefined;
 
 async function getPrismicData() {
   return Prismic.api("https://test24242423.prismic.io/api/v2")
@@ -26,8 +26,8 @@ module.exports = async function() {
   let prismicData = await getPrismicData();
   console.log(prismicData);
   return {
-    // webhookData: JSON.stringify(webhookData),
-    // prismicRef: prismicRef,
+    webhookData: JSON.stringify(webhookData),
+    prismicRef: prismicRef,
     prismicData: JSON.stringify(prismicData)
   };
 };
