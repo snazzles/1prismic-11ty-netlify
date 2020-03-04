@@ -7,10 +7,10 @@ let webhookData = process.env.INCOMING_HOOK_BODY
 
 let prismicRef = webhookData ? webhookData.masterRef : undefined;
 
-async function getPrismicData() {
+async function getPrismicData(ref) {
   return Prismic.api("https://test24242423.prismic.io/api/v2")
     .then(function(api) {
-      return api.query("");
+      return api.query("", { ref: ref });
     })
     .then(
       function(response) {
@@ -23,7 +23,7 @@ async function getPrismicData() {
 }
 
 module.exports = async function() {
-  let prismicData = await getPrismicData();
+  let prismicData = await getPrismicData(prismicRef);
   console.log(prismicData);
   return {
     webhookData: JSON.stringify(webhookData),
