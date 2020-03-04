@@ -16,5 +16,8 @@
   "homepage": "https://github.com/martinkz/11ty-test#readme",
   "devDependencies": {
     "@11ty/eleventy": "^0.10.0"
+  },
+  "dependencies": {
+    "prismic-javascript": "^2.1.5"
   }
 }

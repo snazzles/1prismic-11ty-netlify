@@ -1,53 +1,33 @@
-let testdata = ["item A", "item B", "item C", "item D"];
+const Prismic = require("prismic-javascript");
+//const PrismicDOM = require("prismic-dom");
 
-function transformData(data) {
-  return data.map(entry => `${entry} with a suffix`);
+// let webhookData = process.env.INCOMING_HOOK_BODY
+//   ? JSON.parse(process.env.INCOMING_HOOK_BODY)
+//   : undefined;
+
+// let prismicRef = webhookData ? webhookData.masterRef : undefined;
+
+async function getPrismicData() {
+  return Prismic.api("https://test24242423.prismic.io/api/v2")
+    .then(function(api) {
+      return api.query("");
+    })
+    .then(
+      function(response) {
+        return response.results;
+      },
+      function(err) {
+        console.log("Something went wrong: ", err);
+      }
+    );
 }
 
-let newdata = transformData(testdata);
-
-let webhookData = process.env.INCOMING_HOOK_BODY
-  ? JSON.parse(process.env.INCOMING_HOOK_BODY)
-  : undefined;
-
-let prismicRef = webhookData ? webhookData.masterRef : undefined;
-
-// console.log(newdata);
-
-// module.exports = {
-//     pagination: {
-//       data: "testdata",
-//       size: 2,
-//       before: function(data) {
-//         return data.map(entry => `${entry} with a suffix`);
-//       }
-//     },
-//     newdata: newdata
-// }
-
-module.exports = {
-  transformData: function(data) {
-    return data.map(entry => `${entry} with a suffix`);
-  },
-  newdata: testdata,
-  webhookData: JSON.stringify(webhookData),
-  prismicRef: prismicRef,
-  myFish: [
-    {
-      name: "bass",
-      age: 2
-    },
-    {
-      name: "salmon",
-      age: 5
-    },
-    {
-      name: "mackerel",
-      age: 4
-    },
-    {
-      name: "swordfish",
-      age: 9
-    }
-  ]
+module.exports = async function() {
+  let prismicData = await getPrismicData();
+  console.log(prismicData);
+  return {
+    // webhookData: JSON.stringify(webhookData),
+    // prismicRef: prismicRef,
+    prismicData: JSON.stringify(prismicData)
+  };
 };
