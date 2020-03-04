@@ -1,0 +1,7 @@
+/.codekit-cache
+.DS_Store
+.idea/*
+*.code-workspace
+_site/
+node_modules/
+package-lock.json

@@ -1,0 +1,9 @@
+---
+pagination:
+    data: myData.myFish
+    size: 1
+    alias: fish
+permalink: "fish/{{ fish.name | slug }}/"
+---
+
+{{ fish.name }} is {{ fish.age }} years old

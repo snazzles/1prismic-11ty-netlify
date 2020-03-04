@@ -1,0 +1,35 @@
+---
+pageTitle: My Title
+content: My content dd
+testdata:
+  - item1
+  - item2
+  - item3
+  - item4 
+permalink: "/"
+---
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>My Blog</title>
+    </head>
+    <body>
+        <h1>{{ pageTitle }}</h1>
+        <pre>{{ myData.webhookData }}</pre>
+        <pre>{{ myData.prismicRef }}</pre>
+
+        <p>{{ content }}</p>
+
+        <ul>
+            {%- for item in myData.transformData(myData.newdata) %} 
+              <li>{{ loop.index }}  {{ item }} </li>
+            {% endfor -%}
+        </ul>
+        <ul>
+            {%- for item in possums %} 
+              <li>{{ loop.index }}  {{ item.name }} {{ item.age }} </li>
+            {% endfor -%}
+        </ul>
+    </body>
+</html>
