@@ -1,14 +1,18 @@
 const Prismic = require("prismic-javascript");
 const PrismicDOM = require("prismic-dom");
 
-let webhookData = process.env.INCOMING_HOOK_BODY
-  ? JSON.parse(process.env.INCOMING_HOOK_BODY)
-  : undefined;
-
-let prismicRef = webhookData ? webhookData.masterRef : undefined;
-
 async function getPrismicData(ref) {
-  return Prismic.api("https://test24242423.prismic.io/api/v2")
+  let webhookData = process.env.INCOMING_HOOK_BODY
+    ? JSON.parse(process.env.INCOMING_HOOK_BODY)
+    : undefined;
+
+  let prismicRef = webhookData ? webhookData.masterRef : undefined;
+
+  let prismicRepoURL = process.env.PRISMIC_REPO_URL;
+
+  // if(!prismicRepoURL)
+
+  return Prismic.api(prismicRepoURL)
     .then(function(api) {
       return api.query("", { ref: ref });
     })
