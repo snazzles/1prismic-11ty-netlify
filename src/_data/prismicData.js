@@ -8,11 +8,13 @@ let webhookData = process.env.INCOMING_HOOK_BODY
 let prismicRef = webhookData ? webhookData.masterRef : undefined;
 
 async function getPrismicData(ref) {
-  let prismicRepoURL = process.env.PRISMIC_REPO_URL;
+  let prismicRepoURL = process.env.PRISMIC_REPO_URL2;
 
-  console.log("MYREPO: ", prismicRepoURL);
-
-  // if(!prismicRepoURL)
+  if (!prismicRepoURL) {
+    throw new Error(
+      "PRISMIC_REPO_URL environmental variable not found in Netlify settings."
+    );
+  }
 
   return Prismic.api(prismicRepoURL)
     .then(function(api) {
@@ -30,7 +32,7 @@ async function getPrismicData(ref) {
 
 module.exports = async function() {
   let prismicData = await getPrismicData(prismicRef);
-  console.log(prismicData);
+
   return {
     // webhookData: JSON.stringify(webhookData),
     // prismicRef: prismicRef,
