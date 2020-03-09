@@ -14,7 +14,7 @@ async function getPrismicData(ref) {
 
   // if(!prismicRepoURL)
 
-  return Prismic.api("https://test24242423.prismic.io/api/v2")
+  return Prismic.api(prismicRepoURL)
     .then(function(api) {
       return api.query("", { ref: ref });
     })
