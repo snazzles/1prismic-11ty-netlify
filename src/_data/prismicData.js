@@ -8,7 +8,7 @@ let webhookData = process.env.INCOMING_HOOK_BODY
 let prismicRef = webhookData ? webhookData.masterRef : undefined;
 
 async function getPrismicData(ref) {
-  let prismicRepoURL = process.env.PRISMIC_REPO_URL2;
+  let prismicRepoURL = process.env.PRISMIC_REPO_URL;
 
   if (!prismicRepoURL) {
     throw new Error(
