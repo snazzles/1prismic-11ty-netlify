@@ -36,6 +36,7 @@ module.exports = async function() {
   return {
     // webhookData: JSON.stringify(webhookData),
     // prismicRef: prismicRef,
-    prismicData: JSON.stringify(prismicData, undefined, 2)
+    prismicData: JSON.stringify(prismicData, undefined, 2),
+    title: PrismicDOM.RichText.asHtml(prismicData.data.intro_title)
   };
 };
