@@ -15,7 +15,8 @@
   },
   "homepage": "https://github.com/martinkz/11ty-test#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^0.10.0"
+    "@11ty/eleventy": "^0.10.0",
+    "dotenv": "^8.2.0"
   },
   "dependencies": {
     "prismic-dom": "^2.1.0",
