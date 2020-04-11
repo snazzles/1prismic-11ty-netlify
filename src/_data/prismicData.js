@@ -1,5 +1,5 @@
 const Prismic = require("prismic-javascript");
-const PrismicDOM = require("prismic-dom");
+//const PrismicDOM = require("prismic-dom");
 const dotenv = require('dotenv').config();
 
 let webhookData = process.env.INCOMING_HOOK_BODY
@@ -33,11 +33,11 @@ async function getPrismicData(ref) {
 
 module.exports = async function() {
   let prismicData = await getPrismicData(prismicRef);
-  //console.log(PrismicDOM.RichText.asHtml(prismicData[0].data.intro_title));
+  console.log(prismicData[0].id);
   return {
     // webhookData: JSON.stringify(webhookData),
     // prismicRef: prismicRef,
-    prismicData: JSON.stringify(prismicData, undefined, 2),
-    title: PrismicDOM.RichText.asHtml(prismicData[0].data.intro_title)
+    prismicDataString: JSON.stringify(prismicData, undefined, 2),
+    prismicData: prismicData,
   };
 };

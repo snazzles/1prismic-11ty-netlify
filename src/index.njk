@@ -5,9 +5,10 @@
         <title></title>
     </head>
     <body>
-    {{ prismicData.title }}
+    {{ prismicData.prismicData[0].data.intro_title | richText | safe }}
+    {{ prismicData.prismicData[0].data.intro_copy | richText | safe }}
         {# <pre>{{ prismicData.webhookData }}</pre> #}
         {# <pre>{{ prismicData.prismicRef }}</pre> #}
-        <pre>{{ prismicData.prismicData }}</pre>
+        <pre>{{ prismicData.prismicDataString }}</pre>
     </body>
 </html>
