@@ -13,7 +13,7 @@ async function getPrismicData(ref) {
 
   if (!prismicRepoURL) {
     throw new Error(
-      "PRISMIC_REPO_URL environmental variable not found in Netlify settings."
+      "PRISMIC_REPO_URL environmental variable not found in Netlify settings or .env file."
     );
   }
 
