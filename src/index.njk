@@ -9,6 +9,6 @@
     {# {{ prismicData.prismicData[0].data.intro_copy | richText | safe }} #}
         {# <pre>{{ prismicData.webhookData }}</pre> #}
         {# <pre>{{ prismicData.prismicRef }}</pre> #}
-        <pre>{{ prismicData.prismicDataString }}</pre>
+        <pre>{{ prismicData | JSONstringify }}</pre>
     </body>
 </html>

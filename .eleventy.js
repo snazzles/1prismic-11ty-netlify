@@ -5,6 +5,10 @@ module.exports = function(eleventyConfig) {
     return PrismicDOM.RichText.asHtml(value);
   });
 
+  eleventyConfig.addNunjucksFilter("JSONstringify", function(value) {
+    return JSON.stringify(value, undefined, 2);
+  });
+
   return {
     dir: { 
       input: "src",
