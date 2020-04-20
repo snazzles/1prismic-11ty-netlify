@@ -1,19 +1,19 @@
-module.exports = function(eleventyConfig) {
-  const PrismicDOM = require("prismic-dom");
+module.exports = function (eleventyConfig) {
+	const PrismicDOM = require("prismic-dom");
 
-  eleventyConfig.addNunjucksFilter("richText", function(value) {
-    return PrismicDOM.RichText.asHtml(value);
-  });
+	eleventyConfig.addNunjucksFilter("richText", function (value) {
+		return PrismicDOM.RichText.asHtml(value);
+	});
 
-  eleventyConfig.addNunjucksFilter("JSONstringify", function(value) {
-    return JSON.stringify(value, undefined, 2);
-  });
+	eleventyConfig.addNunjucksFilter("JSONstringify", function (value) {
+		return JSON.stringify(value, undefined, 2);
+	});
 
-  return {
-    dir: { 
-      input: "src",
-      output: "_site",
-      data: "_data"
-    }
-  };
+	return {
+		dir: {
+			input: "src",
+			output: "_site",
+			data: "_data",
+		},
+	};
 };
