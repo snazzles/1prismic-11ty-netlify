@@ -14,9 +14,7 @@ async function getPrismicData(ref) {
 
 	return Prismic.api(prismicRepoURL)
 		.then(function (api) {
-			return api.query("", {
-				ref: ref,
-			});
+			return api.query("", { ref: ref });
 		})
 		.then(
 			function (response) {
