@@ -26,7 +26,7 @@ async function getPrismicData(ref) {
 		);
 }
 
-function bucketData(data) {
+function bucketByType(data) {
 	let dataByType = {};
 	for (let item of data) {
 		if (!dataByType[item.type]) dataByType[item.type] = [];
@@ -37,8 +37,8 @@ function bucketData(data) {
 
 module.exports = async function () {
 	let prismicData = await getPrismicData(prismicRef);
-	//return JSON.stringify(bucketData(prismicData), undefined, 2);
-	return bucketData(prismicData);
+	//return JSON.stringify(bucketByType(prismicData), undefined, 2);
+	return bucketByType(prismicData);
 
 	console.log(prismicData[0].id);
 	return {
