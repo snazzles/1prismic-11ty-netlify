@@ -5,11 +5,12 @@
         <title></title>
     </head>
     <body>
-    {{ prismicData["homepage"][0].data.title | richText | safe }}
+    {% set home = prismicData["homepage"][0].data %}
+    {{ home.title | richText | safe }}
     {# {{ prismicData.prismicData[0].data.intro_copy | richText | safe }} #}
         {# <pre>{{ prismicData.webhookData }}</pre> #}
         {# <pre>{{ prismicData.prismicRef }}</pre> #}
-        <p>All data:</p>
+        <p>Data dump:</p>
         <pre>{{ prismicData | JSONstringify }}</pre>
     </body>
 </html>
