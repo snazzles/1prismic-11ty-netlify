@@ -1,16 +1,11 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-    </head>
-    <body>
-    {% set home = prismicData["homepage"][0].data %}
-    {{ home.title | richText | safe }}
-    {# {{ prismicData.prismicData[0].data.intro_copy | richText | safe }} #}
-        {# <pre>{{ prismicData.webhookData }}</pre> #}
-        {# <pre>{{ prismicData.prismicRef }}</pre> #}
-        <p>Data dump:</p>
-        <pre>{{ prismicData | JSONstringify }}</pre>
-    </body>
-</html>
+---
+layout: layouts/base.njk
+---
+
+{% set home = prismicData["homepage"][0].data %}
+
+{{ home.title | richText | safe }}
+
+<p>Data dump:</p>
+<pre>{{ prismicData | JSONstringify }}</pre>
+

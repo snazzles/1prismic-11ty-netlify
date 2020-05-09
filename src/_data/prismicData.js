@@ -14,14 +14,15 @@ async function getPrismicData(ref) {
 
 	return Prismic.api(prismicRepoURL)
 		.then(function (api) {
-			return api.query("", { ref: ref });
+			// Query 100 documents only. For sites with more pages than this, the below query will have to be modified to fetch multiple pages
+			return api.query("", { ref: ref, pageSize: 100 });
 		})
 		.then(
 			function (response) {
 				return response.results;
 			},
 			function (err) {
-				console.log("Something went wrong: ", err);
+				console.log("Couldn't fetch Prismic data: ", err);
 			}
 		);
 }
@@ -37,14 +38,5 @@ function bucketByType(data) {
 
 module.exports = async function () {
 	let prismicData = await getPrismicData(prismicRef);
-	//return JSON.stringify(bucketByType(prismicData), undefined, 2);
 	return bucketByType(prismicData);
-
-	console.log(prismicData[0].id);
-	return {
-		// webhookData: JSON.stringify(webhookData),
-		// prismicRef: prismicRef,
-		prismicDataString: JSON.stringify(prismicData, undefined, 2),
-		prismicData: prismicData,
-	};
 };
