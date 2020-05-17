@@ -1,7 +1,9 @@
 const Prismic = require("prismic-javascript");
 const dotenv = require("dotenv").config();
 
-let webhookData = process.env.INCOMING_HOOK_BODY ? JSON.parse(process.env.INCOMING_HOOK_BODY) : undefined;
+let webhookData = process.env.INCOMING_HOOK_BODY
+	? JSON.parse(process.env.INCOMING_HOOK_BODY)
+	: "https://mynewsite.prismic.io/api/v2";
 
 let prismicRef = webhookData ? webhookData.masterRef : undefined;
 
