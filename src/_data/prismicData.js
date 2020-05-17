@@ -6,11 +6,11 @@ let webhookData = process.env.INCOMING_HOOK_BODY ? JSON.parse(process.env.INCOMI
 let prismicRef = webhookData ? webhookData.masterRef : undefined;
 
 async function getPrismicData(ref) {
-	let prismicRepoURL = process.env.PRISMIC_REPO_URL || "https://mynewsite.prismic.io/api/v2";
+	let prismicRepoURL = process.env.PRISMIC_REPO_URL;
 
-	if (!prismicRepoURL) {
-		throw new Error("PRISMIC_REPO_URL environmental variable not found in Netlify settings or .env file.");
-	}
+	// if (!prismicRepoURL) {
+	// 	throw new Error("PRISMIC_REPO_URL environmental variable not found in Netlify settings or .env file.");
+	// }
 
 	return Prismic.api(prismicRepoURL)
 		.then(function (api) {
