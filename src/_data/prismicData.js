@@ -14,7 +14,7 @@ async function getPrismicData(ref) {
 
 	return Prismic.api(prismicRepoURL)
 		.then(function (api) {
-			// Query 100 documents only. For sites with more pages than this, the below query will have to be modified to fetch multiple pages
+			// Query 100 documents only. For sites with more documents than this, the below query will have to be modified to fetch multiple pages
 			return api.query("", { ref: ref, pageSize: 100 });
 		})
 		.then(
