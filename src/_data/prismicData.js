@@ -1,14 +1,12 @@
 const Prismic = require("prismic-javascript");
 const dotenv = require("dotenv").config();
 
-let webhookData = process.env.INCOMING_HOOK_BODY
-	? JSON.parse(process.env.INCOMING_HOOK_BODY)
-	: "https://mynewsite.prismic.io/api/v2";
+let webhookData = process.env.INCOMING_HOOK_BODY ? JSON.parse(process.env.INCOMING_HOOK_BODY) : undefined;
 
 let prismicRef = webhookData ? webhookData.masterRef : undefined;
 
 async function getPrismicData(ref) {
-	let prismicRepoURL = process.env.PRISMIC_REPO_URL;
+	let prismicRepoURL = process.env.PRISMIC_REPO_URL || "https://mynewsite.prismic.io/api/v2";
 
 	if (!prismicRepoURL) {
 		throw new Error("PRISMIC_REPO_URL environmental variable not found in Netlify settings or .env file.");
